@@ -4063,15 +4063,15 @@ td:last-child {
  * -------------------------------------------------------------------- */
 .clients-list {
   display: flex;
-  flex-flow: row wrap;
+  justify-content: space-evenly;
   border-color: rgba(0, 0, 0, 0.2);
   border-style: solid;
   border-width: 1px 0 0 1px;
   margin-top: 0;
+  width: 90vw;
 }
 
 .clients-list__item {
-  flex: none;
   width: 20%;
   border-color: rgba(0, 0, 0, 0.2);
   border-width: 1px;
@@ -4094,7 +4094,6 @@ td:last-child {
   margin: 0;
   transform: scale(0.95);
   transition: all 0.5s ease-in;
-  vertical-align: bottom;
 }
 
 .clients-list__item:nth-child(n) {
@@ -4123,11 +4122,14 @@ td:last-child {
 
 @media screen and (max-width: 900px) {
   .clients-list__item {
-    width: 50%;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 600px) {
+  .clients-list {
+    flex-direction: column;
+  }
   .clients-list__item a {
     padding: var(--vspace-1) var(--vspace-0_25);
   }
