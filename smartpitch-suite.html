@@ -36,6 +36,8 @@
         text-decoration: none;
         margin-left: 20px;
         font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     /* Hero Section */
@@ -59,14 +61,26 @@
     }
     .hero .accent { color: #D97706; }
 
-    /* App Grid */
+    /* App Grid - 4 Columns */
     .app-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 40px;
-        max-width: 1200px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        max-width: 95%; /* Increased width */
         margin: 0 auto;
-        padding: 40px 20px 100px 20px;
+        padding: 40px 20px 60px 20px;
+    }
+
+    @media (max-width: 1100px) {
+        .app-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .app-grid {
+            grid-template-columns: 1fr;
+        }
     }
 
     .app-card {
@@ -75,32 +89,36 @@
         border-radius: 12px;
         overflow: hidden;
         transition: transform 0.2s;
+        display: flex;
+        flex-direction: column;
     }
     .app-card:hover {
         transform: translateY(-5px);
         border-color: #D97706;
     }
 
-    .app-image-placeholder {
+    .app-image-container {
         width: 100%;
-        height: 250px;
+        height: 200px;
         background-color: #262626;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         border-bottom: 1px solid #333;
-        color: #666;
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+        overflow: hidden;
+    }
+    .app-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .app-content {
         padding: 30px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
     }
     .app-content h3 {
         font-family: 'Playfair Display', serif;
-        font-size: 28px;
+        font-size: 26px;
         margin: 0 0 10px 0;
         color: white;
     }
@@ -109,6 +127,7 @@
         font-size: 15px;
         line-height: 1.6;
         margin-bottom: 24px;
+        flex-grow: 1;
     }
 
     .btn-open {
@@ -116,15 +135,86 @@
         background-color: #D97706;
         color: white;
         text-decoration: none;
-        padding: 10px 24px;
+        padding: 12px 24px;
         border-radius: 6px;
         font-weight: 600;
         font-size: 14px;
+        text-align: center;
         transition: background 0.2s;
     }
     .btn-open:hover {
         background-color: #b45f04;
     }
+
+    /* Template Section below apps */
+    .template-section {
+        max-width: 95%; /* Aligned with .app-grid */
+        margin: 0 auto;
+        padding: 40px 20px 100px 20px;
+    }
+
+    .template-card {
+        background-color: #1a1e1a;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        align-items: stretch;
+        max-height: 320px; /* Added to reduce height */
+    }
+
+    @media (max-width: 900px) {
+        .template-card {
+            flex-direction: column;
+        }
+    }
+
+    .template-image {
+        flex: 1;
+        max-width: 40%;
+        background-color: #262626;
+        border-right: 1px solid #333;
+    }
+    @media (max-width: 900px) {
+        .template-image { max-width: 100%; border-right: none; border-bottom: 1px solid #333; }
+    }
+    
+    .template-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top; /* Shift focus to top side */
+        display: block;
+    }
+
+    .template-content {
+        flex: 1;
+        padding: 30px 40px; /* Reduced padding */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .template-content .pretitle {
+        color: #D97706;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .template-content h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 36px;
+        margin: 0 0 15px 0;
+        color: white;
+    }
+    .template-content p {
+        color: #9CA3AF;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px; /* Reduced margin */
+    }
+
   </style>
 </head>
 <body>
@@ -147,12 +237,13 @@
       </p>
   </section>
 
+  <!-- 4 Column App Grid -->
   <div class="app-grid">
       
       <!-- Card 1 -->
       <div class="app-card">
-          <div class="app-image-container" style="width: 100%; height: 250px; background-color: #262626; border-bottom: 1px solid #333; overflow: hidden;">
-              <img src="images/board_preview.png" alt="SmartPitch Board Preview" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+          <div class="app-image-container">
+              <img src="images/smartpitch_board_app.jpg" alt="SmartPitch Board">
           </div>
           <div class="app-content">
               <h3>SmartPitch Board</h3>
@@ -165,13 +256,13 @@
 
       <!-- Card 2 -->
       <div class="app-card">
-          <div class="app-image-container" style="width: 100%; height: 250px; background-color: #262626; border-bottom: 1px solid #333; overflow: hidden;">
-              <img src="images/heatmap_correct.png" alt="SmartPitch Heatmap Preview" style="width: 100%; height: 100%; object-fit: cover; object-position: center bottom;">
+          <div class="app-image-container">
+              <img src="images/smartpitch_heatmap_app.jpg" alt="SmartPitch Heatmap">
           </div>
           <div class="app-content">
               <h3>SmartPitch Heatmap</h3>
               <p>
-                  Visualize Spatial Dominance. Instantly translate raw x and y coordinate data into clear, visual tactical heatmaps. Fully configurable to match your club's methodology, allowing analysts to visualize player positioning, movement trends, and pitch control at a glance.
+                  Visualize Spatial Dominance. Instantly translate raw x and y coordinate data into clear, visual tactical heatmaps. Fully configurable to match your club's methodology, allowing analysts to visualize player positioning, movement trends, and pitch control.
               </p>
               <a href="https://smartpitch-heatmap.vercel.app/" target="_blank" class="btn-open">Launch Application</a>
           </div>
@@ -179,13 +270,13 @@
 
       <!-- Card 3 -->
       <div class="app-card">
-          <div class="app-image-container" style="width: 100%; height: 250px; background-color: #262626; border-bottom: 1px solid #333; overflow: hidden;">
-              <img src="images/report_preview.png" alt="SmartPitch Report Preview" style="width: 100%; height: 100%; object-fit: cover; object-position: 0% 12%;">
+          <div class="app-image-container">
+              <img src="images/smartpitch_report_app.jpg" alt="SmartPitch Report Maker">
           </div>
           <div class="app-content">
               <h3>SmartPitch Report Maker</h3>
               <p>
-                  Automated PDF Delivery. Accelerate your analysis workflow. A streamlined, intuitive web application that guides analysts through generating beautiful, professional-grade match and individual player reports as presentation-ready PDFs.
+                  Automated PDF Delivery. Accelerate your analysis workflow. A streamlined toolkit that guides analysts through generating beautiful, professional-grade match and individual player reports as presentation-ready PDFs securely.
               </p>
               <a href="https://football-report-app.onrender.com" target="_blank" class="btn-open">Launch Application</a>
           </div>
@@ -193,18 +284,37 @@
 
       <!-- Card 4 -->
       <div class="app-card">
-          <div class="app-image-container" style="width: 100%; height: 250px; background-color: #262626; border-bottom: 1px solid #333; overflow: hidden;">
-              <img src="images/tagger_preview.png" alt="SmartPitch Tagger Preview" style="width: 100%; height: 100%; object-fit: cover; object-position: center 75%;">
+          <div class="app-image-container">
+              <img src="images/smartpitch_tagger_app.jpg" alt="SmartPitch Tagger">
           </div>
           <div class="app-content">
               <h3>SmartPitch Tagger</h3>
               <p>
-                  Track Every Match Event. Built for live games and post-match video analysis. Easily log important match events like passes, shots, and player combinations. It also tracks precise x and y coordinates, giving analysts the exact location of every action on the pitch.
+                  Track Every Match Event. Built for live games and post-match video analysis. Easily log important match events like passes, shots, and player combinations. It also tracks precise x and y coordinates, giving analysts the exact location.
               </p>
               <a href="https://smartpitchtagger-app.vercel.app/" target="_blank" class="btn-open">Launch Application</a>
           </div>
       </div>
 
+  </div>
+
+  <!-- Live Analysis Template -->
+  <div class="template-section">
+      <div class="template-card">
+          <div class="template-image">
+              <img src="images/live_analysis_template.jpg" alt="Live Match Analysis Template">
+          </div>
+          <div class="template-content">
+              <div class="pretitle">Free Performance Resource</div>
+              <h3>Live Match Analysis Template</h3>
+              <p>
+                  Download our custom-designed Match Template for pitch-side analysts. Record tactical observations, formation changes, and key performance metrics with speed and clarity during live action.
+              </p>
+              <div>
+                  <a href="live-analysis-template.pdf" download="SmartPitch_LiveMatch_Template.pdf" target="_blank" class="btn-open" style="padding: 14px 30px;">Download Template (PDF)</a>
+              </div>
+          </div>
+      </div>
   </div>
 
   <footer style="text-align: center; padding: 40px; color: #666; font-size: 14px; border-top: 1px solid #222; margin-top: 20px;">
