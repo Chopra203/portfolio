@@ -132,18 +132,20 @@
 
     .btn-open {
         display: inline-block;
-        background-color: #D97706;
-        color: white;
+        background-color: transparent;
+        color: #D97706;
+        border: 1px solid #D97706;
         text-decoration: none;
-        padding: 12px 24px;
+        padding: 11px 23px; /* Slightly reduced to account for 1px border */
         border-radius: 6px;
         font-weight: 600;
         font-size: 14px;
         text-align: center;
-        transition: background 0.2s;
+        transition: all 0.2s;
     }
     .btn-open:hover {
-        background-color: #b45f04;
+        background-color: #D97706;
+        color: white;
     }
 
     /* Template Section below apps */
