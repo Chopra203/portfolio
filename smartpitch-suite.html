@@ -166,6 +166,7 @@
     @media (max-width: 900px) {
         .template-card {
             flex-direction: column;
+            max-height: none !important;
         }
     }
 
@@ -176,7 +177,12 @@
         border-right: 1px solid #333;
     }
     @media (max-width: 900px) {
-        .template-image { max-width: 100%; border-right: none; border-bottom: 1px solid #333; }
+        .template-image { 
+            max-width: 100%; 
+            border-right: none; 
+            border-bottom: 1px solid #333; 
+            min-height: 250px; 
+        }
     }
     
     .template-image img {
