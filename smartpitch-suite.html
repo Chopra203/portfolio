@@ -1,43 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SmartPitch Suite || Shivam</title>
+  <title>SmartPitch Suite | Shivam Chopra</title>
 
-  <!-- Borrowing a couple basic fonts to emulate actual website -->
+  <script>
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Portfolio CSS -->
+  <link rel="stylesheet" href="css/vendor.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600&display=swap');
 
     body {
         margin: 0;
         padding: 0;
         background-color: #212722;
-        color: #f3f4f6;
-        font-family: 'Inter', sans-serif;
-    }
-
-    /* Basic Navbar Mockup */
-    header {
-        display: flex;
-        justify-content: space-between;
-        padding: 30px 40px;
-        align-items: center;
-        border-bottom: 1px solid #333;
-    }
-    header h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 24px;
-        margin: 0;
-        color: white;
-    }
-    header a {
-        color: #9CA3AF;
-        text-decoration: none;
-        margin-left: 20px;
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        color: #FEF6E6;
+        font-family: 'Roboto Flex', sans-serif;
     }
 
     /* Hero Section */
@@ -47,17 +38,19 @@
         background: linear-gradient(to bottom, #2a312b, #212722);
     }
     .hero h2 {
-        font-family: 'Playfair Display', serif;
+        font-family: 'DM Serif Display', serif;
         font-size: 48px;
         margin: 0 0 20px 0;
-        color: white;
+        color: #FEF6E6;
     }
     .hero p {
-        color: #9CA3AF;
+        color: rgba(254, 246, 230, 0.70);
         max-width: 700px;
         margin: 0 auto;
         font-size: 18px;
         line-height: 1.6;
+        font-family: 'Roboto Flex', sans-serif;
+        font-weight: 300;
     }
     .hero .accent { color: #D97706; }
 
@@ -66,9 +59,9 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 30px;
-        max-width: 95%; /* Increased width */
+        width: min(92%, 1760px);
         margin: 0 auto;
-        padding: 40px 20px 60px 20px;
+        padding: 40px var(--gutter) 60px;
     }
 
     @media (max-width: 1100px) {
@@ -84,17 +77,17 @@
     }
 
     .app-card {
-        background-color: #1a1e1a;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background-color: #111312;
+        border: 1px solid rgba(254, 246, 230, 0.12);
         border-radius: 12px;
         overflow: hidden;
-        transition: transform 0.2s;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
         display: flex;
         flex-direction: column;
     }
     .app-card:hover {
-        transform: translateY(-5px);
-        border-color: #D97706;
+        border-color: rgba(254, 246, 230, 0.28);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     }
 
     .app-image-container {
@@ -117,52 +110,65 @@
         flex-grow: 1;
     }
     .app-content h3 {
-        font-family: 'Playfair Display', serif;
+        font-family: 'DM Serif Display', serif;
         font-size: 26px;
         margin: 0 0 10px 0;
-        color: white;
+        color: #FEF6E6;
     }
     .app-content p {
-        color: #9CA3AF;
+        color: rgba(254, 246, 230, 0.65);
         font-size: 15px;
         line-height: 1.6;
         margin-bottom: 24px;
         flex-grow: 1;
+        font-family: 'Roboto Flex', sans-serif;
+        font-weight: 300;
     }
 
-    .btn-open {
-        display: inline-block;
+    /* Card launch button */
+    .btn-card {
+        display: block;
+        width: 100%;
         background-color: transparent;
-        color: #D97706;
-        border: 1px solid #D97706;
+        color: #FEF6E6;
+        border: 2px solid rgba(254, 246, 230, 0.30);
         text-decoration: none;
-        padding: 11px 23px; /* Slightly reduced to account for 1px border */
-        border-radius: 6px;
+        padding: 14px 0;
+        border-radius: 5px;
+        font-family: 'Roboto Flex', sans-serif;
         font-weight: 600;
-        font-size: 14px;
+        font-size: 12px;
         text-align: center;
-        transition: all 0.2s;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
     }
-    .btn-open:hover {
+    .btn-card:hover {
         background-color: #D97706;
-        color: white;
+        border-color: #D97706;
+        color: #111312;
     }
 
     /* Template Section below apps */
     .template-section {
-        max-width: 95%; /* Aligned with .app-grid */
+        width: min(92%, 1760px);
         margin: 0 auto;
-        padding: 40px 20px 100px 20px;
+        padding: 0 var(--gutter) 60px;
     }
 
     .template-card {
-        background-color: #1a1e1a;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background-color: #111312;
+        border: 1px solid rgba(254, 246, 230, 0.12);
         border-radius: 12px;
         overflow: hidden;
         display: flex;
         align-items: stretch;
         max-height: 320px; /* Added to reduce height */
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .template-card:hover {
+        border-color: rgba(254, 246, 230, 0.28);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     }
 
     @media (max-width: 900px) {
@@ -211,32 +217,68 @@
         margin-bottom: 10px;
     }
     .template-content h3 {
-        font-family: 'Playfair Display', serif;
+        font-family: 'DM Serif Display', serif;
         font-size: 36px;
         margin: 0 0 15px 0;
-        color: white;
+        color: #FEF6E6;
     }
     .template-content p {
-        color: #9CA3AF;
+        color: rgba(254, 246, 230, 0.65);
         font-size: 16px;
         line-height: 1.6;
-        margin-bottom: 20px; /* Reduced margin */
+        margin-bottom: 20px;
+        font-family: 'Roboto Flex', sans-serif;
+        font-weight: 300;
     }
 
   </style>
 </head>
-<body>
+<body id="top">
 
-  <header>
-      <div class="s-header__logo" style="display: flex; align-items: center;">
+  <!-- preloader -->
+  <div id="preloader">
+    <div id="loader" class="dots-fade">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <div id="page" class="s-pagewrap">
+
+  <!-- # site header -->
+  <header class="s-header">
+    <div class="row s-header__inner width-sixteen-col">
+      <div class="s-header__block">
+        <div class="s-header__logo">
           <a class="logo" href="index.html">
-              <img src="images/logo.svg" alt="Shivam Portfolio" style="max-height: 48px; width: auto; display: block;" />
+            <img src="images/logo.svg" alt="Homepage" />
           </a>
+        </div>
+        <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
       </div>
-      <nav>
-          <a href="index.html">Back to Portfolio</a>
+      <!-- end s-header__block -->
+
+      <nav class="s-header__nav">
+        <ul class="s-header__menu-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="smartpitch-suite.html">SmartPitch</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#services">Areas of expertise</a></li>
+          <li><a href="index.html#cta">Contact</a></li>
+        </ul>
+        <!-- s-header__menu-links -->
+
+        <div class="s-header__contact">
+          <a href="index.html#cta" class="btn btn--primary s-header__contact-btn">Let's Work Together</a>
+        </div>
+        <!-- s-header__contact -->
       </nav>
+      <!-- end s-header__nav -->
+    </div>
+    <!-- end s-header__inner -->
   </header>
+  <!-- end s-header -->
 
   <section class="hero">
       <img src="images/smartpitch_logo.png" alt="SmartPitch Suite Logo" style="max-height: 85px; width: auto; display: block; margin: 0 auto 20px auto;" />
@@ -259,7 +301,7 @@
               <p>
                   Your Digital Tactical Canvas. A professional tactical board designed for the modern game. Instantly plot team formations, map out highly detailed set-piece routines, and illustrate tactical concepts with dynamic precision.
               </p>
-              <a href="https://smartpitch-board.vercel.app/" target="_blank" class="btn-open">Launch Application</a>
+              <a href="https://smartpitch-board.vercel.app/" target="_blank" class="btn-card">Launch Application</a>
           </div>
       </div>
 
@@ -273,7 +315,7 @@
               <p>
                   Visualize Spatial Dominance. Instantly translate raw x and y coordinate data into clear, visual tactical heatmaps. Fully configurable to match your club's methodology, allowing analysts to visualize player positioning, movement trends, and pitch control.
               </p>
-              <a href="https://smartpitch-heatmap.vercel.app/" target="_blank" class="btn-open">Launch Application</a>
+              <a href="https://smartpitch-heatmap.vercel.app/" target="_blank" class="btn-card">Launch Application</a>
           </div>
       </div>
 
@@ -287,7 +329,7 @@
               <p>
                   Automated PDF Delivery. Accelerate your analysis workflow. A streamlined toolkit that guides analysts through generating beautiful, professional-grade match and individual player reports as presentation-ready PDFs securely.
               </p>
-              <a href="https://football-report-app.onrender.com" target="_blank" class="btn-open">Launch Application</a>
+              <a href="https://football-report-app.onrender.com" target="_blank" class="btn-card">Launch Application</a>
           </div>
       </div>
 
@@ -301,7 +343,7 @@
               <p>
                   Track Every Match Event. Built for live games and post-match video analysis. Easily log important match events like passes, shots, and player combinations. It also tracks precise x and y coordinates, giving analysts the exact location.
               </p>
-              <a href="https://smartpitchtagger-app.vercel.app/" target="_blank" class="btn-open">Launch Application</a>
+              <a href="https://smartpitchtagger-app.vercel.app/" target="_blank" class="btn-card">Launch Application</a>
           </div>
       </div>
 
@@ -310,7 +352,7 @@
   <div class="template-section">
       <div class="template-card" style="max-height: 420px;">
           <div class="template-image">
-              <img src="images/course_image.png" alt="Video Course Preview">
+              <img src="images/course_image.jpg" alt="Video Course Preview">
           </div>
           <div class="template-content">
               <div class="pretitle">Premium Video Course</div>
@@ -318,13 +360,13 @@
               <p>
                   Unlock the secrets of professional match analysis. This comprehensive video course bridges the gap between raw data and on-pitch tactics.
               </p>
-              <ul style="margin: 0px 0 20px 20px; padding: 0; color: #a1a1aa; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.4;">
+              <ul style="margin: 0px 0 20px 20px; padding: 0; color: rgba(254, 246, 230, 0.65); font-family: 'Roboto Flex', sans-serif; font-size: 15px; line-height: 1.4; font-weight: 300;">
                   <li style="margin-bottom: 5px;">Blend qualitative video analysis with quantitative metrics.</li>
                   <li style="margin-bottom: 5px;">Master pre-match, live, and post-match workflows.</li>
                   <li style="margin-bottom: 5px;">Learn to present data effectively to managers and players.</li>
               </ul>
               <div>
-                  <a href="https://tagmango.app/2a6587962b" target="_blank" class="btn-open" style="padding: 14px 30px;">Enroll Now</a>
+                  <a href="https://tagmango.app/2a6587962b" target="_blank" class="btn-card" style="display: inline-block; width: auto; padding: 12px 28px;">Enroll Now</a>
               </div>
           </div>
       </div>
@@ -343,15 +385,76 @@
                   Download our custom-designed Match Template for pitch-side analysts. Record tactical observations, formation changes, and key performance metrics with speed and clarity during live action.
               </p>
               <div>
-                  <a href="live-analysis-template.pdf" download="SmartPitch_LiveMatch_Template.pdf" target="_blank" class="btn-open" style="padding: 14px 30px;">Download Template (PDF)</a>
+                  <a href="live-analysis-template.pdf" download="SmartPitch_LiveMatch_Template.pdf" target="_blank" class="btn-card" style="display: inline-block; width: auto; padding: 12px 28px;">Download Template (PDF)</a>
               </div>
           </div>
       </div>
   </div>
 
-  <footer style="text-align: center; padding: 40px; color: #666; font-size: 14px; border-top: 1px solid #222; margin-top: 20px;">
-      &copy; 2026 SmartPitch Suite. All rights reserved.
-  </footer>
+  <!-- # FOOTER -->
+  <section id="cta" class="s-cta">
+    <div class="row row-x-center text-center">
+      <div class="column xl-10 lg-12">
+        <div class="s-cta__content" style="display: flex; flex-direction: column; align-items: center">
+          <h2 class="text-display-title">Get in Touch.</h2>
+          <p class="lead">
+            I am available for freelancing projects and open to career opportunities and collaborations. <br>
+            Whether you have a project in mind, a job opening, or an idea for collaboration. <br>
+            Feel free to reach out.
+          </p>
+
+          <a href="mailto:shichopra123@gmail.com" class="btn btn--primary"
+            style="display: flex; align-items: center; width: fit-content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              style="fill: rgba(0, 0, 0, 1); margin-right: 5px">
+              <path
+                d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z">
+              </path>
+            </svg>
+            Send Me An Email
+          </a>
+
+          <div style="display: flex; justify-content: center">
+            <ul class="s-footer__social social-list">
+              <li>
+                <a href="https://public.tableau.com/app/profile/shivam.chopra/vizzes" target="_blank">
+                  <div style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
+                    <img src="/images/logo/tableau.svg" height="24px" width="24px" style="margin-bottom: 0" />
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/shivam-chopra-5ab375134/" target="_blank">
+                  <div style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
+                    <img src="/images/logo/linkedin.svg" height="24px" width="24px" style="margin-bottom: 0" />
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/officialshivamchopra/" target="_blank">
+                  <div style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
+                    <img src="/images/logo/instagram.svg" height="24px" width="24px" style="margin-bottom: 0" />
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 2rem; color: #858585">
+            &copy; Copyright Shivam 2024
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end FOOTER -->
+
+  </div>
+  <!-- end page-wrap -->
+
+  <!-- Java Script -->
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 </html>
