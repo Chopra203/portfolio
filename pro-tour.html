@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartPitch Pro — The Full Analyst Toolkit</title>
+  <meta name="description" content="Unlock the complete SmartPitch Pro Suite: Heatmap, Tagger, and Match Report. Professional football analysis tools for coaches and analysts." />
+
+  <script>
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Lemon Squeezy JS Overlay — opens checkout as a popup -->
+  <script>
+    window.lemonSqueezyAffiliateConfig = { store: 'smartpitch' };
+  </script>
+  <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+
+  <!-- Portfolio CSS -->
+  <link rel="stylesheet" href="css/vendor.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #212722;
+      color: #FEF6E6;
+      font-family: 'Roboto Flex', sans-serif;
+    }
+
+    /* ── Hero ─────────────────────────────── */
+    .pt-hero {
+      text-align: center;
+      padding: 120px 20px 80px;
+      background: linear-gradient(to bottom, #2a312b, #212722);
+      position: relative;
+      overflow: hidden;
+    }
+    .pt-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(217,119,6,0.10) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .pt-hero .eyebrow {
+      color: #D97706;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .pt-hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 5vw, 62px);
+      color: #FEF6E6;
+      margin: 0 0 22px 0;
+      line-height: 1.1;
+    }
+    .pt-hero h1 span { color: #D97706; }
+    .pt-hero p {
+      color: rgba(254,246,230,0.70);
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 660px;
+      margin: 0 auto 14px;
+      font-weight: 300;
+    }
+    .pt-hero .included-note {
+      color: rgba(254,246,230,0.40);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      margin-top: 10px;
+    }
+
+    /* ── Feature rows ─────────────────────── */
+    .features-wrapper {
+      width: min(92%, 1200px);
+      margin: 0 auto;
+      padding: 60px 0 40px;
+    }
+
+    .feature-row {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      padding: 70px 0;
+      border-bottom: 1px solid rgba(254,246,230,0.07);
+    }
+    .feature-row:last-child { border-bottom: none; }
+
+    /* alternate image side */
+    .feature-row.reverse { flex-direction: row-reverse; }
+
+    .feature-media {
+      flex: 1 1 50%;
+      min-width: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111312;
+      border: 1px solid rgba(254,246,230,0.10);
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feature-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Placeholder when no GIF yet */
+    .feature-media .placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: rgba(254,246,230,0.20);
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .feature-media .placeholder svg {
+      opacity: 0.25;
+    }
+
+    .feature-text {
+      flex: 1 1 50%;
+      min-width: 0;
+    }
+    .feature-text .eyebrow {
+      color: #D97706;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .feature-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      color: #FEF6E6;
+      margin: 0 0 18px 0;
+      line-height: 1.15;
+    }
+    .feature-text p {
+      color: rgba(254,246,230,0.65);
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px 0;
+    }
+    .feature-list li {
+      color: rgba(254,246,230,0.65);
+      font-size: 15px;
+      font-weight: 300;
+      padding: 5px 0 5px 22px;
+      position: relative;
+    }
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #D97706;
+      font-weight: 500;
+    }
+
+    /* ── Pro badge ───────────────────────── */
+    .pro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(217,119,6,0.15);
+      border: 1px solid rgba(217,119,6,0.40);
+      color: #D97706;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    /* ── Checkout CTA ─────────────────────── */
+    .checkout-section {
+      background: linear-gradient(135deg, #1a1e1a 0%, #111312 100%);
+      border-top: 1px solid rgba(217,119,6,0.20);
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .checkout-section::before {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(217,119,6,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .checkout-section .price-tag {
+      font-family: 'DM Serif Display', serif;
+      font-size: 52px;
+      color: #FEF6E6;
+      margin: 0 0 6px 0;
+    }
+    .checkout-section .price-sub {
+      color: rgba(254,246,230,0.40);
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      margin-bottom: 30px;
+    }
+    .checkout-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px;
+      color: #FEF6E6;
+      margin: 0 0 14px 0;
+    }
+    .checkout-section p {
+      color: rgba(254,246,230,0.60);
+      font-size: 16px;
+      max-width: 500px;
+      margin: 0 auto 36px;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    /* Lemon Squeezy button — styled to match btn-card outline theme */
+    a.lemonsqueezy-button, .lemonsqueezy-button {
+      display: inline-block;
+      background-color: transparent;
+      color: #FEF6E6 !important;
+      font-family: 'Roboto Flex', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 48px;
+      border-radius: 5px;
+      border: 2px solid rgba(254, 246, 230, 0.30);
+      cursor: pointer;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+    a.lemonsqueezy-button:hover, .lemonsqueezy-button:hover {
+      background-color: #D97706;
+      border-color: #D97706;
+      color: #111312 !important;
+    }
+
+    .guarantee-note {
+      margin-top: 20px;
+      color: rgba(254,246,230,0.35);
+      font-size: 13px;
+    }
+
+    /* ── Responsive ───────────────────────── */
+    @media (max-width: 860px) {
+      .feature-row,
+      .feature-row.reverse {
+        flex-direction: column;
+        gap: 36px;
+        padding: 50px 0;
+      }
+      .feature-media { width: 100%; }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- preloader -->
+  <div id="preloader">
+    <div id="loader" class="dots-fade">
+      <div></div><div></div><div></div>
+    </div>
+  </div>
+
+  <div id="page" class="s-pagewrap">
+
+  <!-- # site header -->
+  <header class="s-header">
+    <div class="row s-header__inner width-sixteen-col">
+      <div class="s-header__block">
+        <div class="s-header__logo">
+          <a class="logo" href="index.html">
+            <img src="images/logo.svg" alt="Homepage" />
+          </a>
+        </div>
+        <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
+      </div>
+
+      <nav class="s-header__nav">
+        <ul class="s-header__menu-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="smartpitch-suite.html">SmartPitch</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#services">Areas of expertise</a></li>
+          <li><a href="index.html#cta">Contact</a></li>
+        </ul>
+        <div class="s-header__contact">
+          <a href="#checkout" class="btn btn--primary s-header__contact-btn">Get Pro Access</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- end s-header -->
+
+  <!-- ── Hero ── -->
+  <section class="pt-hero">
+    <img src="images/smartpitch_logo.png" alt="SmartPitch" style="max-height: 70px; width: auto; display: block; margin: 0 auto 24px auto;" />
+    <div class="eyebrow">SmartPitch Pro Suite</div>
+    <h1>The Complete <span>Analyst Toolkit.</span></h1>
+    <p>
+      Three precision-built web applications, one subscription.
+      From spatial heatmaps to live event tagging to automated PDF reports —
+      everything your analysis workflow demands.
+    </p>
+    <div class="included-note">Includes: SmartPitch Heatmap · SmartPitch Tagger · SmartPitch Match Report</div>
+  </section>
+
+  <!-- ── Feature Rows ── -->
+  <section class="features-wrapper">
+
+    <!-- Feature 1: Heatmap (image left, text right) -->
+    <div class="feature-row">
+      <div class="feature-media">
+        <!-- Replace src with your GIF when ready -->
+        <img src="images/smartpitch_heatmap_app.jpg" alt="SmartPitch Heatmap demo" />
+      </div>
+      <div class="feature-text">
+        <span class="pro-badge">Pro Tool 01</span>
+        <div class="eyebrow">Spatial Intelligence</div>
+        <h2>SmartPitch Heatmap</h2>
+        <p>
+          Visualize Spatial Dominance. Instantly translate raw x and y coordinate data into clear, visual tactical heatmaps. Fully configurable to match your club's methodology, allowing analysts to visualize player positioning, movement trends, and pitch control.
+        </p>
+        <ul class="feature-list">
+          <li>Plot events directly onto the pitch — fast, clean, and browser-based</li>
+          <li>Tag individual players with deep event details for granular analysis</li>
+          <li>Switch between different zone overlays instantly</li>
+          <li>Export visuals for presentations or download raw data as CSV</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Feature 2: Tagger (image right, text left) -->
+    <div class="feature-row reverse">
+      <div class="feature-media">
+        <!-- Replace src with your GIF when ready -->
+        <img src="images/smartpitch_tagger_app.jpg" alt="SmartPitch Tagger demo" />
+      </div>
+      <div class="feature-text">
+        <span class="pro-badge">Pro Tool 02</span>
+        <div class="eyebrow">Live Event Capture</div>
+        <h2>SmartPitch Tagger</h2>
+        <p>
+          Track Every Match Event. Built for live games and post-match video analysis. Easily log important match events like passes, shots, and player combinations. It also tracks precise x and y coordinates, giving analysts the exact location.
+        </p>
+        <ul class="feature-list">
+          <li>Track dribbles, passes, combinations, crosses — or define your own custom events</li>
+          <li>Log outcomes (successful / unsuccessful) and add player-specific details</li>
+          <li>Visualise using arrows, dots, or links for instant pitch-side clarity</li>
+          <li>Export visuals for reports, player maps, and presentations</li>
+          <li>Records precise x and y coordinates for future data analysis</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Feature 3: Match Report (image left, text right) -->
+    <div class="feature-row">
+      <div class="feature-media">
+        <!-- Replace src with your GIF when ready -->
+        <img src="images/smartpitch_report_app.jpg" alt="SmartPitch Match Report demo" />
+      </div>
+      <div class="feature-text">
+        <span class="pro-badge">Pro Tool 03</span>
+        <div class="eyebrow">Automated Reporting</div>
+        <h2>SmartPitch Match Report</h2>
+        <p>
+          Automated PDF Delivery. Accelerate your analysis workflow. A streamlined toolkit that guides analysts through generating beautiful, professional-grade match and individual player reports as presentation-ready PDFs securely.
+        </p>
+        <ul class="feature-list">
+          <li>Pre-built report templates for match & player analysis</li>
+          <li>Generate detailed individual player or full team reports — just fill in the details and it produces a professional PDF automatically</li>
+          <li>Secure, shareable PDF output in one click</li>
+          <li>Consistent, professional presentation every time</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── Checkout CTA ── -->
+  <section class="checkout-section" id="checkout">
+    <div style="color: #D97706; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px;">SmartPitch Pro</div>
+    <h2>Start Your Pro Subscription</h2>
+    <p>
+      Get full access to all three premium tools — SmartPitch Heatmap, Tagger, and Match Report.
+      One subscription, everything included. Cancel anytime.
+    </p>
+
+    <!-- Lemon Squeezy checkout button — replace href with your actual checkout URL -->
+    <a
+      href="https://smartpitch.lemonsqueezy.com/checkout/buy/707c7d97-6b6d-41d4-aa03-f9c94ce4018f"
+      class="lemonsqueezy-button"
+    >
+      Subscribe Now
+    </a>
+
+  </section>
+
+
+  <!-- # FOOTER -->
+  <section id="cta" class="s-cta">
+    <div class="row row-x-center text-center">
+      <div class="column xl-10 lg-12">
+        <div class="s-cta__content" style="display: flex; flex-direction: column; align-items: center">
+          <h2 class="text-display-title">Get in Touch.</h2>
+          <p class="lead">
+            I am available for freelancing projects and open to career opportunities and collaborations. <br>
+            Whether you have a project in mind, a job opening, or an idea for collaboration. <br>
+            Feel free to reach out.
+          </p>
+
+          <a href="mailto:shichopra123@gmail.com" class="btn btn--primary"
+            style="display: flex; align-items: center; width: fit-content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              style="fill: rgba(0, 0, 0, 1); margin-right: 5px">
+              <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
+            </svg>
+            Send Me An Email
+          </a>
+
+          <div style="display: flex; justify-content: center">
+            <ul class="s-footer__social social-list">
+              <li>
+                <a href="https://public.tableau.com/app/profile/shivam.chopra/vizzes" target="_blank">
+                  <div style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;">
+                    <img src="/images/logo/tableau.svg" height="24px" width="24px" style="margin-bottom:0" />
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/shivam-chopra-5ab375134/" target="_blank">
+                  <div style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;">
+                    <img src="/images/logo/linkedin.svg" height="24px" width="24px" style="margin-bottom:0" />
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/officialshivamchopra/" target="_blank">
+                  <div style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;">
+                    <img src="/images/logo/instagram.svg" height="24px" width="24px" style="margin-bottom:0" />
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 2rem; color: #858585">
+            &copy; Copyright Shivam 2024
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div><!-- end page-wrap -->
+
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

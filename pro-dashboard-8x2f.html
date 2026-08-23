@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartPitch Pro — Member Dashboard</title>
+  <!-- NOTE: This page is intentionally unlinked from site navigation.
+       Share only with verified Pro members after purchase. -->
+
+  <script>
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Portfolio CSS -->
+  <link rel="stylesheet" href="css/vendor.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #212722;
+      color: #FEF6E6;
+      font-family: 'Roboto Flex', sans-serif;
+    }
+
+    /* ── Hero ──────────────────────────── */
+    .dash-hero {
+      text-align: center;
+      padding: 120px 20px 60px;
+      background: linear-gradient(to bottom, #1a1e1a, #212722);
+    }
+    .dash-hero .eyebrow {
+      color: #D97706;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .dash-hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(30px, 4vw, 52px);
+      color: #FEF6E6;
+      margin: 0 0 14px 0;
+    }
+    .dash-hero p {
+      color: rgba(254,246,230,0.55);
+      font-size: 16px;
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── Grid ──────────────────────────── */
+    .dash-grid-wrap {
+      width: min(92%, 1320px);
+      margin: 0 auto;
+      padding: 50px var(--gutter, 2.4rem) 80px;
+    }
+
+    .dash-section-label {
+      color: rgba(254,246,230,0.35);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(254,246,230,0.07);
+    }
+
+    .dash-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    @media (max-width: 900px) { .dash-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .dash-grid { grid-template-columns: 1fr; } }
+
+    .dash-card {
+      background: #111312;
+      border: 1px solid rgba(254,246,230,0.10);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .dash-card:hover {
+      border-color: rgba(254,246,230,0.25);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+
+    .dash-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      background: #1a1e1a;
+    }
+
+    .dash-card-body {
+      padding: 24px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .dash-card-body h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: #FEF6E6;
+      margin: 0 0 8px 0;
+    }
+    .dash-card-body p {
+      color: rgba(254,246,230,0.55);
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 300;
+      flex-grow: 1;
+      margin-bottom: 20px;
+    }
+
+    .dash-btn {
+      display: block;
+      width: 100%;
+      background: transparent;
+      color: #FEF6E6;
+      border: 2px solid rgba(254,246,230,0.25);
+      text-decoration: none;
+      padding: 12px 0;
+      border-radius: 5px;
+      font-family: 'Roboto Flex', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      text-align: center;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+    .dash-btn:hover {
+      background: #D97706;
+      border-color: #D97706;
+      color: #111312;
+    }
+    .dash-btn.dash-btn--download {
+      border-color: rgba(217,119,6,0.35);
+      color: #D97706;
+    }
+    .dash-btn.dash-btn--download:hover {
+      background: #D97706;
+      color: #111312;
+    }
+
+    /* ── Template cards (2-col) ────────── */
+    .dash-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    @media (max-width: 680px) { .dash-grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body id="top">
+
+  <!-- preloader -->
+  <div id="preloader">
+    <div id="loader" class="dots-fade">
+      <div></div><div></div><div></div>
+    </div>
+  </div>
+
+  <div id="page" class="s-pagewrap">
+
+  <!-- Header — no SmartPitch Pro link in nav (unlinked page) -->
+  <header class="s-header">
+    <div class="row s-header__inner width-sixteen-col">
+      <div class="s-header__block">
+        <div class="s-header__logo">
+          <a class="logo" href="index.html">
+            <img src="images/logo.svg" alt="Homepage" />
+          </a>
+        </div>
+        <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
+      </div>
+      <nav class="s-header__nav">
+        <ul class="s-header__menu-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="smartpitch-suite.html">SmartPitch</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#services">Areas of expertise</a></li>
+          <li><a href="index.html#cta">Contact</a></li>
+        </ul>
+        <div class="s-header__contact">
+          <a href="index.html#cta" class="btn btn--primary s-header__contact-btn">Let's Work Together</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="dash-hero">
+    <img src="images/smartpitch_logo.png" alt="SmartPitch" style="max-height: 60px; width: auto; display: block; margin: 0 auto 20px auto;" />
+    <div class="eyebrow">Pro Member Dashboard</div>
+    <h1>Welcome to SmartPitch Pro</h1>
+    <p>Your complete toolkit is live and ready. Launch any application below or download your premium resources.</p>
+  </section>
+
+  <!-- Main Dashboard -->
+  <div class="dash-grid-wrap">
+
+    <!-- Premium Web Apps -->
+    <div class="dash-section-label">Premium Web Applications</div>
+    <div class="dash-grid">
+
+      <!-- Heatmap -->
+      <div class="dash-card">
+        <img src="images/smartpitch_heatmap_app.jpg" alt="SmartPitch Heatmap" class="dash-card-img" />
+        <div class="dash-card-body">
+          <h3>SmartPitch Heatmap</h3>
+          <p>Translate raw coordinate data into clear, configurable tactical heatmaps. Visualise player positioning, movement trends, and pitch control in seconds.</p>
+          <a href="https://smartpitch-heatmap.vercel.app/" target="_blank" class="dash-btn">Launch Application</a>
+        </div>
+      </div>
+
+      <!-- Tagger -->
+      <div class="dash-card">
+        <img src="images/smartpitch_tagger_app.jpg" alt="SmartPitch Tagger" class="dash-card-img" />
+        <div class="dash-card-body">
+          <h3>SmartPitch Tagger</h3>
+          <p>Log match events live or from video with precise x/y coordinates. Fully customisable event taxonomy to match your analysis system.</p>
+          <a href="https://smartpitchtagger-app.vercel.app/" target="_blank" class="dash-btn">Launch Application</a>
+        </div>
+      </div>
+
+      <!-- Match Report -->
+      <div class="dash-card">
+        <img src="images/smartpitch_report_app.jpg" alt="SmartPitch Match Report" class="dash-card-img" />
+        <div class="dash-card-body">
+          <h3>SmartPitch Match Report</h3>
+          <p>Generate professional, branded PDF reports from your data in one click. Pre-built templates for match analysis and individual player reviews.</p>
+          <a href="https://football-report-app.onrender.com" target="_blank" class="dash-btn">Launch Application</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Premium Downloads -->
+    <div class="dash-section-label">Premium Templates &amp; Resources</div>
+    <div class="dash-grid-2">
+
+      <!-- Excel / Analysis Template placeholder -->
+      <div class="dash-card">
+        <div class="dash-card-body" style="padding-top: 30px;">
+          <h3>Live Match Analysis Template</h3>
+          <p>Custom-designed pitch-side analysis sheet. Record tactical observations, formation changes, and key performance metrics with speed and clarity during live action.</p>
+          <a href="live-analysis-template.pdf" download="SmartPitch_LiveMatch_Template.pdf" target="_blank" class="dash-btn dash-btn--download">↓ Download PDF Template</a>
+        </div>
+      </div>
+
+      <!-- Video Course -->
+      <div class="dash-card">
+        <img src="images/course_image.jpg" alt="Video Course" class="dash-card-img" />
+        <div class="dash-card-body">
+          <h3>Beginner's Guide to Football Performance Analysis</h3>
+          <p>The complete video course — blending qualitative video analysis with quantitative metrics across pre-match, live, and post-match workflows.</p>
+          <a href="https://tagmango.app/2a6587962b" target="_blank" class="dash-btn">Access Course</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div><!-- end dash-grid-wrap -->
+
+  <!-- Footer -->
+  <section id="cta" class="s-cta">
+    <div class="row row-x-center text-center">
+      <div class="column xl-10 lg-12">
+        <div class="s-cta__content" style="display: flex; flex-direction: column; align-items: center">
+          <h2 class="text-display-title">Need Help?</h2>
+          <p class="lead">
+            If you have any questions about the Pro tools or need support, reach out directly.
+          </p>
+          <a href="mailto:shichopra123@gmail.com" class="btn btn--primary"
+            style="display: flex; align-items: center; width: fit-content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              style="fill: rgba(0,0,0,1); margin-right: 5px">
+              <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
+            </svg>
+            Send Me An Email
+          </a>
+          <div style="margin-top: 2rem; color: #858585">&copy; Copyright Shivam 2024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div><!-- end page-wrap -->
+
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
