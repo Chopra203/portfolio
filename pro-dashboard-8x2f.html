@@ -138,11 +138,11 @@
       margin: 0;
     }
 
-    /* ── Horizontal App Cards ──────────── */
+    /* ── Universal Standard Card Rows ──── */
     .app-rows {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
     }
 
     .app-item-card {
@@ -152,6 +152,7 @@
       border: 1px solid rgba(254, 246, 230, 0.08);
       border-radius: 12px;
       overflow: hidden;
+      min-height: 180px;
       transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     }
     .app-item-card:hover {
@@ -162,7 +163,6 @@
 
     .app-item-media {
       flex: 0 0 280px;
-      min-height: 200px;
       background: #111312;
       border-right: 1px solid rgba(254,246,230,0.06);
       display: flex;
@@ -184,11 +184,11 @@
 
     .app-item-body {
       flex: 1;
-      padding: 30px 36px;
+      padding: 28px 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
+      gap: 28px;
       flex-wrap: wrap;
     }
     .app-item-info {
@@ -206,9 +206,9 @@
     }
     .app-item-info h3 {
       font-family: 'DM Serif Display', serif;
-      font-size: 24px;
+      font-size: 23px;
       color: #FEF6E6;
-      margin: 0 0 10px 0;
+      margin: 0 0 8px 0;
       line-height: 1.2;
     }
     .app-item-info p {
@@ -217,13 +217,12 @@
       line-height: 1.65;
       font-weight: 300;
       margin: 0;
-      max-width: 650px;
+      max-width: 680px;
     }
 
     .app-action-btn {
-      flex: 0 0 auto;
-      display: inline-block;
-      width: 210px;
+      flex: 0 0 220px;
+      width: 220px;
       text-align: center;
       background: transparent;
       color: #FEF6E6;
@@ -233,7 +232,7 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       text-decoration: none;
-      padding: 14px 24px;
+      padding: 14px 20px;
       border-radius: 5px;
       border: 2px solid rgba(254, 246, 230, 0.30);
       transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
@@ -245,67 +244,13 @@
       color: #111312;
     }
 
-    /* ── 2-Col Grid for Resources ─────── */
-    .resource-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .resource-card {
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid rgba(254, 246, 230, 0.08);
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.25s ease, transform 0.25s ease;
-    }
-    .resource-card:hover {
-      border-color: rgba(217, 119, 6, 0.35);
-      transform: translateY(-2px);
-    }
-    .resource-img-wrap {
-      width: 100%;
-      height: 180px;
-      overflow: hidden;
-      background: #111312;
-      border-bottom: 1px solid rgba(254,246,230,0.06);
-    }
-    .resource-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .resource-body {
-      padding: 28px 30px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .resource-body h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px;
-      color: #FEF6E6;
-      margin: 0 0 10px 0;
-    }
-    .resource-body p {
-      color: rgba(254,246,230,0.60);
-      font-size: 14px;
-      line-height: 1.6;
-      font-weight: 300;
-      flex: 1;
-      margin-bottom: 22px;
-    }
-
     /* ── Responsive ───────────────────── */
     @media (max-width: 960px) {
       .app-item-card {
         flex-direction: column;
       }
       .app-item-media {
-        flex: 0 0 180px;
+        flex: 0 0 190px;
         width: 100%;
         border-right: none;
         border-bottom: 1px solid rgba(254,246,230,0.06);
@@ -314,10 +259,8 @@
         padding: 24px;
       }
       .app-action-btn {
+        flex: 1 1 auto;
         width: 100%;
-      }
-      .resource-grid {
-        grid-template-columns: 1fr;
       }
       .pro-section-box {
         padding: 32px 24px;
@@ -367,22 +310,37 @@
     <img src="images/smartpitch_logo.png" alt="SmartPitch" style="max-height: 65px; width: auto; display: block; margin: 0 auto 20px auto;" />
     <div class="member-badge">Active Pro Membership</div>
     <h1>SmartPitch Pro <span>Dashboard</span></h1>
-    <p>Welcome to your complete analysis ecosystem. All premium web applications and analysis resources are unlocked and ready below.</p>
+    <p>Welcome to your complete analysis ecosystem. All applications and performance analysis resources are unlocked and ready below.</p>
   </section>
 
   <!-- ── Main Dashboard ── -->
   <div class="dash-container">
 
-    <!-- ── Pro Web Applications Container ── -->
+    <!-- ── Web Applications Container ── -->
     <div class="pro-section-box">
       
       <div class="section-header">
         <div class="sec-eyebrow">Suite Access</div>
-        <h2>Premium Web Applications</h2>
-        <p>Launch any tool directly in your browser. Enter your license key on first launch to unlock full access.</p>
+        <h2>Web Applications</h2>
+        <p>Launch any tool directly in your browser. Enter your license key once on first launch to unlock full Pro access.</p>
       </div>
 
       <div class="app-rows">
+
+        <!-- Tool 0: SmartPitch Board -->
+        <div class="app-item-card">
+          <div class="app-item-media">
+            <img src="images/smartpitch_board_app.jpg" alt="SmartPitch Board" />
+          </div>
+          <div class="app-item-body">
+            <div class="app-item-info">
+              <span class="app-tool-tag">Tactical Canvas · Core Application</span>
+              <h3>SmartPitch Board</h3>
+              <p>Your digital tactical canvas. Instantly plot team formations, map out highly detailed set-piece routines, and illustrate tactical concepts with dynamic precision.</p>
+            </div>
+            <a href="https://smartpitch-board.vercel.app/" target="_blank" class="app-action-btn">Launch Application</a>
+          </div>
+        </div>
 
         <!-- Tool 1: Heatmap -->
         <div class="app-item-card">
@@ -393,7 +351,7 @@
             <div class="app-item-info">
               <span class="app-tool-tag">Pro Tool 01 · Spatial Intelligence</span>
               <h3>SmartPitch Heatmap</h3>
-              <p>Visualize spatial dominance instantly. Translate raw coordinate data into clear tactical heatmaps with custom zone layouts, player filtering, and high-res export.</p>
+              <p>Visualize spatial dominance. Translate raw coordinate data into clear tactical heatmaps with custom zone layouts, player filtering, and high-res export.</p>
             </div>
             <a href="https://smartpitch-heatmap.vercel.app/" target="_blank" class="app-action-btn">Launch Application</a>
           </div>
@@ -432,38 +390,44 @@
       </div>
     </div>
 
-    <!-- ── Premium Templates & Resources Container ── -->
+    <!-- ── Resources & Education Container (Identical Layout) ── -->
     <div class="pro-section-box">
       
       <div class="section-header">
         <div class="sec-eyebrow">Resources &amp; Education</div>
         <h2>Templates &amp; Video Course</h2>
-        <p>Included with your Pro membership for pitch-side tactical analysis and continued learning.</p>
+        <p>Included with your Pro membership for pitch-side match analysis and advanced workflow training.</p>
       </div>
 
-      <div class="resource-grid">
+      <div class="app-rows">
 
         <!-- Resource 1: PDF Template -->
-        <div class="resource-card">
-          <div class="resource-img-wrap">
+        <div class="app-item-card">
+          <div class="app-item-media">
             <img src="images/live_analysis_template.jpg" alt="Live Match Analysis Template" />
           </div>
-          <div class="resource-body">
-            <h3>Live Match Analysis Template</h3>
-            <p>Download our custom-designed pitch-side analysis sheet. Record tactical observations, formation changes, and key performance metrics with speed and clarity.</p>
-            <a href="live-analysis-template.pdf" download="SmartPitch_LiveMatch_Template.pdf" target="_blank" class="app-action-btn" style="width: 100%;">Download PDF</a>
+          <div class="app-item-body">
+            <div class="app-item-info">
+              <span class="app-tool-tag">Pitch-Side Resource · Analysis Sheet</span>
+              <h3>Live Match Analysis Template</h3>
+              <p>Download our custom-designed pitch-side analysis sheet. Record tactical observations, formation changes, and key performance metrics with speed and clarity during live action.</p>
+            </div>
+            <a href="live-analysis-template.pdf" download="SmartPitch_LiveMatch_Template.pdf" target="_blank" class="app-action-btn">Download PDF</a>
           </div>
         </div>
 
         <!-- Resource 2: Video Course -->
-        <div class="resource-card">
-          <div class="resource-img-wrap">
-            <img src="images/course_image.jpg" alt="Video Course" />
+        <div class="app-item-card">
+          <div class="app-item-media">
+            <img src="images/course_image.jpg" alt="Video Course Preview" />
           </div>
-          <div class="resource-body">
-            <h3>Beginner's Guide to Performance Analysis</h3>
-            <p>The complete video masterclass — master pre-match, live, and post-match workflows while bridging qualitative video analysis with quantitative metrics.</p>
-            <a href="https://tagmango.app/2a6587962b" target="_blank" class="app-action-btn" style="width: 100%;">Access Course</a>
+          <div class="app-item-body">
+            <div class="app-item-info">
+              <span class="app-tool-tag">Video Masterclass · Tactical Workflows</span>
+              <h3>Beginner's Guide to Football Performance Analysis</h3>
+              <p>The complete video masterclass — master pre-match, live, and post-match workflows while bridging qualitative video analysis with quantitative metrics.</p>
+            </div>
+            <a href="https://tagmango.app/2a6587962b" target="_blank" class="app-action-btn">Access Course</a>
           </div>
         </div>
 
