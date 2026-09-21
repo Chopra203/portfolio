@@ -21,7 +21,9 @@
   <link rel="manifest" href="site.webmanifest" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600;8..144,700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; }
 
     body {
         margin: 0;
@@ -29,118 +31,189 @@
         background-color: #212722;
         color: #FEF6E6;
         font-family: 'Roboto Flex', sans-serif;
+        overflow-x: hidden;
     }
 
-    /* Hero Section */
+    /* ── Hero Section ──────────────────────── */
     .hero {
         text-align: center;
-        padding: 100px 20px;
+        padding: 110px 20px 60px;
         background: linear-gradient(to bottom, #2a312b, #212722);
+        position: relative;
+        overflow: hidden;
+    }
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 600px; height: 600px;
+        background: radial-gradient(circle, rgba(217,119,6,0.10) 0%, transparent 65%);
+        pointer-events: none;
     }
     .hero h2 {
         font-family: 'DM Serif Display', serif;
-        font-size: 48px;
-        margin: 0 0 20px 0;
+        font-size: clamp(30px, 4.5vw, 48px);
+        margin: 0 0 16px 0;
         color: #FEF6E6;
+        line-height: 1.2;
     }
     .hero p {
         color: rgba(254, 246, 230, 0.70);
-        max-width: 700px;
+        max-width: 720px;
         margin: 0 auto;
-        font-size: 18px;
-        line-height: 1.6;
-        font-family: 'Roboto Flex', sans-serif;
+        font-size: 17px;
+        line-height: 1.65;
         font-weight: 300;
     }
     .hero .accent { color: #D97706; }
 
-    /* App Grid - 4 Columns */
-    .app-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 30px;
+    /* ── Universal Section Layout ──────────── */
+    .suite-section {
         width: min(92%, 1760px);
         margin: 0 auto;
-        padding: 40px var(--gutter) 60px;
+        padding: 40px var(--gutter, 2.4rem) 0;
     }
 
-    @media (max-width: 1100px) {
-        .app-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .app-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .app-card {
-        background-color: #111312;
-        border: 1px solid rgba(254, 246, 230, 0.12);
-        border-radius: 12px;
+    /* ── Luxury Container Box ──────────────── */
+    .suite-box {
+        background: linear-gradient(135deg, #1a1e1a 0%, #111312 100%);
+        border: 1px solid rgba(217, 119, 6, 0.35);
+        border-radius: 16px;
+        padding: 48px 40px;
+        position: relative;
         overflow: hidden;
-        transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .suite-box::before {
+        content: '';
+        position: absolute;
+        top: -80px; left: 50%;
+        transform: translateX(-50%);
+        width: 400px; height: 400px;
+        background: radial-gradient(circle, rgba(217, 119, 6, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .suite-box-header {
+        text-align: center;
+        margin-bottom: 36px;
+    }
+    .suite-box-header .eyebrow {
+        color: #D97706;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+    .suite-box-header h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(28px, 4vw, 36px);
+        color: #FEF6E6;
+        margin: 0 0 10px 0;
+        line-height: 1.15;
+    }
+    .suite-box-header p {
+        color: rgba(254, 246, 230, 0.50);
+        font-size: 15px;
+        font-weight: 300;
+        margin: 0;
+    }
+
+    /* ── Flexible Card Rows ────────────────── */
+    .suite-cards-list {
         display: flex;
         flex-direction: column;
-    }
-    .app-card:hover {
-        border-color: rgba(254, 246, 230, 0.28);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+        gap: 20px;
     }
 
-    .app-image-container {
-        width: 100%;
-        height: 200px;
-        background-color: #262626;
-        border-bottom: 1px solid #333;
+    .suite-card-row {
+        display: flex;
+        align-items: stretch;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(254, 246, 230, 0.08);
+        border-radius: 12px;
         overflow: hidden;
+        min-height: 160px;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
     }
-    .app-image-container img {
+    .suite-card-row:hover {
+        border-color: rgba(217, 119, 6, 0.35);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+        transform: translateY(-2px);
+    }
+
+    .suite-card-media {
+        flex: 0 0 240px;
+        background: #1a1e1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-right: 1px solid rgba(254, 246, 230, 0.06);
+        position: relative;
+    }
+    .suite-card-media img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
-
-    .app-content {
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-    .app-content h3 {
-        font-family: 'DM Serif Display', serif;
-        font-size: 26px;
-        margin: 0 0 10px 0;
-        color: #FEF6E6;
-    }
-    .app-content p {
-        color: rgba(254, 246, 230, 0.65);
-        font-size: 15px;
-        line-height: 1.6;
-        margin-bottom: 24px;
-        flex-grow: 1;
-        font-family: 'Roboto Flex', sans-serif;
-        font-weight: 300;
-    }
-
-    /* Card launch button */
-    .btn-card {
         display: block;
-        width: 100%;
+        transition: transform 0.35s ease;
+    }
+    .suite-card-row:hover .suite-card-media img {
+        transform: scale(1.03);
+    }
+
+    .suite-card-content {
+        flex: 1;
+        padding: 24px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .suite-card-text {
+        flex: 1;
+        min-width: 240px;
+    }
+    .suite-card-text h3 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 22px;
+        color: #FEF6E6;
+        margin: 0 0 8px 0;
+        line-height: 1.2;
+    }
+    .suite-card-text p {
+        color: rgba(254, 246, 230, 0.55);
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: 300;
+        margin: 0;
+    }
+
+    .suite-card-action {
+        flex: 0 0 auto;
+    }
+
+    /* ── Standard Button ───────────────────── */
+    .btn-card {
+        display: inline-block;
+        width: 220px;
         background-color: transparent;
         color: #FEF6E6;
         border: 2px solid rgba(254, 246, 230, 0.30);
         text-decoration: none;
-        padding: 14px 0;
+        padding: 13px 18px;
         border-radius: 5px;
         font-family: 'Roboto Flex', sans-serif;
         font-weight: 600;
-        font-size: 12px;
+        font-size: 11.5px;
         text-align: center;
         letter-spacing: 2px;
         text-transform: uppercase;
+        white-space: nowrap;
         transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
     }
     .btn-card:hover {
@@ -149,88 +222,201 @@
         color: #111312;
     }
 
-    /* Template Section below apps */
+    /* ── Pro Suite Teaser ──────────────────── */
+    .pro-teaser-box {
+        background: linear-gradient(135deg, #1a1e1a 0%, #111312 100%);
+        border: 1px solid rgba(217, 119, 6, 0.35);
+        border-radius: 16px;
+        padding: 56px 40px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .pro-teaser-box::before {
+        content: '';
+        position: absolute;
+        top: -80px; left: 50%;
+        transform: translateX(-50%);
+        width: 400px; height: 400px;
+        background: radial-gradient(circle, rgba(217, 119, 6, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .pro-teaser-box .eyebrow {
+        color: #D97706;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+    .pro-teaser-box h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(30px, 4.5vw, 42px);
+        color: #FEF6E6;
+        margin: 0 0 16px 0;
+        line-height: 1.15;
+    }
+    .pro-teaser-box p {
+        color: rgba(254, 246, 230, 0.65);
+        font-size: 16px;
+        line-height: 1.7;
+        max-width: 620px;
+        margin: 0 auto 34px auto;
+        font-weight: 300;
+    }
+
+    /* ── Video Course Section ──────────────── */
     .template-section {
         width: min(92%, 1760px);
         margin: 0 auto;
-        padding: 0 var(--gutter) 60px;
+        padding: 40px var(--gutter, 2.4rem) 60px;
     }
 
     .template-card {
-        background-color: #111312;
+        background: linear-gradient(135deg, #1a1e1a 0%, #111312 100%);
         border: 1px solid rgba(254, 246, 230, 0.12);
-        border-radius: 12px;
+        border-radius: 16px;
         overflow: hidden;
         display: flex;
         align-items: stretch;
-        max-height: 320px; /* Added to reduce height */
+        min-height: 320px;
         transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
     .template-card:hover {
-        border-color: rgba(254, 246, 230, 0.28);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-    }
-
-    @media (max-width: 900px) {
-        .template-card {
-            flex-direction: column;
-            max-height: none !important;
-        }
+        border-color: rgba(217, 119, 6, 0.35);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
     }
 
     .template-image {
-        flex: 1;
-        max-width: 30%;
-        background-color: #262626;
-        border-right: 1px solid #333;
+        flex: 0 0 35%;
+        max-width: 35%;
+        background-color: #1a1e1a;
+        border-right: 1px solid rgba(254, 246, 230, 0.06);
+        overflow: hidden;
     }
-    @media (max-width: 900px) {
-        .template-image { 
-            max-width: 100%; 
-            border-right: none; 
-            border-bottom: 1px solid #333; 
-            min-height: 250px; 
-        }
-    }
-    
     .template-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center top; /* Shift focus to top side */
+        object-position: center top;
         display: block;
     }
 
     .template-content {
         flex: 1;
-        padding: 30px 40px; /* Reduced padding */
+        padding: 36px 40px;
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
     .template-content .pretitle {
         color: #D97706;
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 14px;
+        letter-spacing: 2px;
+        font-size: 11px;
         margin-bottom: 10px;
     }
     .template-content h3 {
         font-family: 'DM Serif Display', serif;
-        font-size: 36px;
-        margin: 0 0 15px 0;
+        font-size: clamp(24px, 3vw, 32px);
+        margin: 0 0 12px 0;
         color: #FEF6E6;
+        line-height: 1.2;
     }
     .template-content p {
         color: rgba(254, 246, 230, 0.65);
-        font-size: 16px;
+        font-size: 15px;
         line-height: 1.6;
-        margin-bottom: 20px;
-        font-family: 'Roboto Flex', sans-serif;
+        margin-bottom: 16px;
         font-weight: 300;
     }
+    .template-content ul {
+        margin: 0 0 24px 20px;
+        padding: 0;
+        color: rgba(254, 246, 230, 0.65);
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: 300;
+    }
+    .template-content li {
+        margin-bottom: 6px;
+    }
 
+    /* ── Responsive Rules (Tablet & Mobile) ── */
+    @media (max-width: 960px) {
+        .suite-box, .pro-teaser-box {
+            padding: 36px 24px;
+        }
+        .suite-card-row {
+            flex-direction: column;
+            min-height: auto;
+        }
+        .suite-card-media {
+            flex: 0 0 190px;
+            width: 100%;
+            height: 190px;
+            border-right: none;
+            border-bottom: 1px solid rgba(254, 246, 230, 0.06);
+        }
+        .suite-card-content {
+            padding: 24px 20px;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 18px;
+        }
+        .suite-card-text {
+            min-width: 0;
+            width: 100%;
+        }
+        .suite-card-action,
+        .suite-card-action .btn-card {
+            width: 100% !important;
+        }
+        .template-card {
+            flex-direction: column;
+            min-height: auto;
+        }
+        .template-image {
+            flex: 0 0 200px;
+            max-width: 100%;
+            width: 100%;
+            height: 200px;
+            border-right: none;
+            border-bottom: 1px solid rgba(254, 246, 230, 0.06);
+        }
+        .template-content {
+            padding: 24px 20px;
+        }
+        .template-content .btn-card {
+            width: 100% !important;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .hero {
+            padding: 80px 16px 40px;
+        }
+        .suite-section, .template-section {
+            padding-left: 14px;
+            padding-right: 14px;
+            padding-top: 24px;
+        }
+        .suite-box, .pro-teaser-box {
+            padding: 28px 16px;
+            border-radius: 12px;
+        }
+        .suite-card-media {
+            height: 160px;
+            flex: 0 0 160px;
+        }
+        .suite-card-content {
+            padding: 18px 14px;
+        }
+        .template-content {
+            padding: 20px 16px;
+        }
+    }
   </style>
 </head>
 <body id="top">
@@ -257,7 +443,6 @@
         </div>
         <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
       </div>
-      <!-- end s-header__block -->
 
       <nav class="s-header__nav">
         <ul class="s-header__menu-links">
@@ -267,73 +452,66 @@
           <li><a href="index.html#services">Areas of expertise</a></li>
           <li><a href="index.html#cta">Contact</a></li>
         </ul>
-        <!-- s-header__menu-links -->
 
         <div class="s-header__contact">
           <a href="index.html#cta" class="btn btn--primary s-header__contact-btn">Let's Work Together</a>
         </div>
-        <!-- s-header__contact -->
       </nav>
-      <!-- end s-header__nav -->
     </div>
-    <!-- end s-header__inner -->
   </header>
-  <!-- end s-header -->
 
+  <!-- ── Hero ── -->
   <section class="hero">
       <img src="images/smartpitch_logo.png" alt="SmartPitch Suite Logo" style="max-height: 85px; width: auto; display: block; margin: 0 auto 20px auto;" />
       <h2>Elevate Your Vision with the <span class="accent">SmartPitch Suite</span></h2>
       <p>
-          Built by coaches, for coaches. A collection of custom-engineered web applications designed for elite football clubs, tactical analysts, and grassroots academies. Every tool in the SmartPitch ecosystem is built with a single goal: turning raw match data and complex strategy into clear, actionable, on-pitch intelligence.
+          Built by coaches, for coaches. A collection of custom-engineered web applications designed for elite football clubs, tactical analysts, and grassroots academies. Every tool in the SmartPitch ecosystem turns raw match data into clear, actionable, on-pitch intelligence.
       </p>
   </section>
 
   <!-- ── Free Tools: Board + Live Template ── -->
-  <div style="width: min(92%, 1760px); margin: 0 auto; padding: 40px var(--gutter) 0;">
-    <div style="background: linear-gradient(135deg, #1a1e1a 0%, #111312 100%); border: 1px solid rgba(217,119,6,0.35); border-radius: 16px; padding: 50px; position: relative; overflow: hidden;">
+  <div class="suite-section">
+    <div class="suite-box">
 
-      <!-- amber glow top-centre (mirrors Premium section) -->
-      <div style="position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(217,119,6,0.08) 0%, transparent 70%); pointer-events: none;"></div>
-
-      <!-- Header (mirrors Premium section layout) -->
-      <div style="text-align: center; margin-bottom: 40px;">
-        <div style="color: #D97706; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px;">Free Access</div>
-        <h2 style="font-family: 'DM Serif Display', serif; font-size: 36px; color: #FEF6E6; margin: 0 0 12px 0; line-height: 1.15;">Free Tools</h2>
-        <p style="color: rgba(254,246,230,0.50); font-size: 16px; font-weight: 300; margin: 0;">No sign-up required · Available to everyone</p>
+      <!-- Header -->
+      <div class="suite-box-header">
+        <div class="eyebrow">Free Access</div>
+        <h2>Free Tools</h2>
+        <p>No sign-up required · Available to everyone</p>
       </div>
 
       <!-- Horizontal card rows -->
-      <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div class="suite-cards-list">
 
         <!-- SmartPitch Board -->
-        <div style="display: flex; align-items: center; gap: 0; background: rgba(255,255,255,0.03); border: 1px solid rgba(254,246,230,0.08); border-radius: 10px; overflow: hidden; min-height: 160px;">
-          <!-- Image -->
-          <div style="flex: 0 0 220px; height: 160px; background: #1a1e1a; display: flex; align-items: center; justify-content: center; overflow: hidden; border-right: 1px solid rgba(254,246,230,0.06);">
-            <img src="images/smartpitch_board_app.jpg" alt="SmartPitch Board" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;">
+        <div class="suite-card-row">
+          <div class="suite-card-media">
+            <img src="images/smartpitch_board_app.jpg" alt="SmartPitch Board">
           </div>
-          <!-- Content -->
-          <div style="flex: 1; padding: 24px 30px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 200px;">
-              <h3 style="font-family: 'DM Serif Display', serif; font-size: 22px; color: #FEF6E6; margin: 0 0 8px 0;">SmartPitch Board</h3>
-              <p style="color: rgba(254,246,230,0.55); font-size: 14px; line-height: 1.6; font-weight: 300; margin: 0;">Your Digital Tactical Canvas. Plot formations, map set-pieces, and illustrate tactical concepts with dynamic precision.</p>
+          <div class="suite-card-content">
+            <div class="suite-card-text">
+              <h3>SmartPitch Board</h3>
+              <p>Your Digital Tactical Canvas. Plot formations, map set-pieces, and illustrate tactical concepts with dynamic precision.</p>
             </div>
-            <a href="https://smartpitch-board.vercel.app/" target="_blank" class="btn-card" style="flex: 0 0 auto; width: 220px; white-space: nowrap;">Launch Application</a>
+            <div class="suite-card-action">
+              <a href="https://smartpitch-board.vercel.app/" target="_blank" class="btn-card">Launch Application</a>
+            </div>
           </div>
         </div>
 
         <!-- Live Match Analysis Template -->
-        <div style="display: flex; align-items: center; gap: 0; background: rgba(255,255,255,0.03); border: 1px solid rgba(254,246,230,0.08); border-radius: 10px; overflow: hidden; min-height: 160px;">
-          <!-- Image -->
-          <div style="flex: 0 0 220px; height: 160px; background: #1a1e1a; display: flex; align-items: center; justify-content: center; overflow: hidden; border-right: 1px solid rgba(254,246,230,0.06);">
-            <img src="images/live_analysis_template.jpg" alt="Live Match Analysis Template" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;">
+        <div class="suite-card-row">
+          <div class="suite-card-media">
+            <img src="images/live_analysis_template.jpg" alt="Live Match Analysis Template">
           </div>
-          <!-- Content -->
-          <div style="flex: 1; padding: 24px 30px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 200px;">
-              <h3 style="font-family: 'DM Serif Display', serif; font-size: 22px; color: #FEF6E6; margin: 0 0 8px 0;">Live Match Analysis Template</h3>
-              <p style="color: rgba(254,246,230,0.55); font-size: 14px; line-height: 1.6; font-weight: 300; margin: 0;">Custom-designed pitch-side sheet. Record tactical observations, formation changes, and key metrics with clarity during live action.</p>
+          <div class="suite-card-content">
+            <div class="suite-card-text">
+              <h3>Live Match Analysis Template</h3>
+              <p>Custom-designed pitch-side sheet. Record tactical observations, formation changes, and key metrics with clarity during live action.</p>
             </div>
-            <a href="live-analysis-template.pdf" download="SmartPitch_LiveMatch_Template.pdf" target="_blank" class="btn-card" style="flex: 0 0 auto; width: 220px; white-space: nowrap;">Download PDF</a>
+            <div class="suite-card-action">
+              <a href="live-analysis-template.pdf" download="SmartPitch_LiveMatch_Template.pdf" target="_blank" class="btn-card">Download PDF</a>
+            </div>
           </div>
         </div>
 
@@ -341,23 +519,21 @@
     </div>
   </div>
 
-
   <!-- ── SmartPitch Pro Suite Teaser ── -->
-  <div style="width: min(92%, 1760px); margin: 0 auto; padding: 40px var(--gutter) 0;">
-    <div style="background: linear-gradient(135deg, #1a1e1a 0%, #111312 100%); border: 1px solid rgba(217,119,6,0.35); border-radius: 16px; padding: 60px 50px; text-align: center; position: relative; overflow: hidden;">
-      <div style="position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(217,119,6,0.08) 0%, transparent 70%); pointer-events: none;"></div>
-      <div style="color: #D97706; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px;">Premium Access</div>
-      <h2 style="font-family: 'DM Serif Display', serif; font-size: 42px; color: #FEF6E6; margin: 0 0 18px 0; line-height: 1.15;">SmartPitch Pro Suite</h2>
-      <p style="color: rgba(254,246,230,0.65); font-size: 17px; line-height: 1.7; max-width: 600px; margin: 0 auto 36px auto; font-weight: 300;">
+  <div class="suite-section">
+    <div class="pro-teaser-box">
+      <div class="eyebrow">Premium Access</div>
+      <h2>SmartPitch Pro Suite</h2>
+      <p>
         Go beyond the board. Unlock the full SmartPitch ecosystem — Heatmap visualisation, live event Tagger, and automated Match Report generation — built for analysts who demand precision at every level.
       </p>
-      <a href="pro-tour.html" class="btn btn--primary" style="font-size: 15px; letter-spacing: 1px;">Explore SmartPitch Pro &rarr;</a>
+      <a href="pro-tour.html" class="btn btn--primary" style="font-size: 14px; letter-spacing: 1px; padding: 14px 32px; display: inline-block;">Explore SmartPitch Pro &rarr;</a>
     </div>
   </div>
 
   <!-- ── Video Course ── -->
-  <div class="template-section" style="padding-top: 40px;">
-      <div class="template-card" style="max-height: 420px;">
+  <div class="template-section">
+      <div class="template-card">
           <div class="template-image">
               <img src="images/course_image.jpg" alt="Video Course Preview">
           </div>
@@ -367,13 +543,13 @@
               <p>
                   Unlock the secrets of professional match analysis. This comprehensive video course bridges the gap between raw data and on-pitch tactics.
               </p>
-              <ul style="margin: 0px 0 20px 20px; padding: 0; color: rgba(254, 246, 230, 0.65); font-family: 'Roboto Flex', sans-serif; font-size: 15px; line-height: 1.4; font-weight: 300;">
-                  <li style="margin-bottom: 5px;">Blend qualitative video analysis with quantitative metrics.</li>
-                  <li style="margin-bottom: 5px;">Master pre-match, live, and post-match workflows.</li>
-                  <li style="margin-bottom: 5px;">Learn to present data effectively to managers and players.</li>
+              <ul>
+                  <li>Blend qualitative video analysis with quantitative metrics.</li>
+                  <li>Master pre-match, live, and post-match workflows.</li>
+                  <li>Learn to present data effectively to managers and players.</li>
               </ul>
               <div>
-                  <a href="https://tagmango.app/2a6587962b" target="_blank" class="btn-card" style="display: inline-block; width: auto; padding: 12px 28px;">Enroll Now</a>
+                  <a href="https://tagmango.app/2a6587962b" target="_blank" class="btn-card" style="display: inline-block; width: 220px;">Enroll Now</a>
               </div>
           </div>
       </div>
