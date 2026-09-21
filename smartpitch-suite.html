@@ -265,6 +265,33 @@
         font-weight: 300;
     }
 
+    /* ── Bold Amber Pro Button ─────────────── */
+    .btn-pro-accent {
+        display: inline-block;
+        background-color: #D97706;
+        color: #111312 !important;
+        border: 2px solid #D97706;
+        text-decoration: none;
+        padding: 16px 42px;
+        border-radius: 6px;
+        font-family: 'Roboto Flex', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        box-shadow: 0 4px 18px rgba(217, 119, 6, 0.28);
+        transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease, color 0.25s ease;
+    }
+    .btn-pro-accent:hover {
+        background-color: #b45309;
+        border-color: #b45309;
+        color: #FEF6E6 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(217, 119, 6, 0.45);
+    }
+
     /* ── Video Course Section ──────────────── */
     .template-section {
         width: min(92%, 1760px);
@@ -371,6 +398,9 @@
         }
         .suite-card-action,
         .suite-card-action .btn-card {
+            width: 100% !important;
+        }
+        .btn-pro-accent {
             width: 100% !important;
         }
         .template-card {
@@ -527,7 +557,7 @@
       <p>
         Go beyond the board. Unlock the full SmartPitch ecosystem — Heatmap visualisation, live event Tagger, and automated Match Report generation — built for analysts who demand precision at every level.
       </p>
-      <a href="pro-tour.html" class="btn-card" style="width: auto; min-width: 260px; padding: 15px 36px; font-size: 12px; display: inline-block;">Explore SmartPitch Pro &rarr;</a>
+      <a href="pro-tour.html" class="btn-pro-accent">Explore SmartPitch Pro &rarr;</a>
     </div>
   </div>
 
